@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compec 22-23' Signature Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet" />
+</head>
+<body>
+    <div class="header-container">   
+        <h1 class="baslik"> Compec Mail Signature Generator </h1>
+    </div>
+    
+    <div class="mainframe">
+    <div class="questions-holder">
+
+
+        <div class="question">
+            <p class="question1">Surname</p>
+            <p class="question1-info">Use lower case - english characters. Example: sivrikaya</p>
+            <input type="text" class="questioninput" id="q1" placeholder="Emir Yaman Sivrikaya">
+        </div>
+
+        <div class="question">
+            <p class="question1">Phone Number: </p>
+            <input type="text" class="questioninput" id="q2" placeholder="532 123 45 67">
+        </div>
+
+        <div class="question">
+            <p class="question1">Mail Address: </p>
+            <input type="text" class="questioninput" id="q3" placeholder="example@leader.compec.org">
+        </div>
+
+        <div class="question">
+            <p class="question1">LinkedIn Profile Url: </p>
+            <input type="text" class="questioninput" id="q4" placeholder="https://www.linkedin.com/in/emir-yaman-sivrikaya/">
+        </div>
+
+        
+        <div class="buttons">
+            <button onclick="submit()"  id='submitbutonu' class="submit">COMPEC ROCKS!</button>
+    
+        </div>
+    </div>
+
+    <div class="sigcontainer" style="width: 545px;
+    background-color:aqua;
+    margin:auto;
+    margin-top: 50px;">
+        <table id="sigtable" cellpadding="0" cellspacing="0">
+        
+                  <tr class="tablerow" style="    margin: 0px;
+                  border: 0px;
+                  padding: 0px;
+                  background-color: #ffffff;">
+                    <td class="tg-0pky" rowspan="4" style="    margin: 0px;
+                    border: 0px;
+                    padding: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    background-color: #ffffff;">
+                        <img id="sig-image" src="/assets/imza.png">
+                    </td>
+                    <td class="tg-0lax" style="    margin: 0px;
+                    border: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding: 0px;
+                    background-color: #ffffff;">
+                        <a id="phonelink" href="https://wa.me/905326810544"  target="_blank">
+                            <img src="/assets/phone.png" style="width: 44px; height: 40px;">
+                        </a>
+                            
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="tg-0lax" style="    margin: 0px;
+                    border: 0px;
+                    padding: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    background-color: #ffffff;">
+                        <a id="maillink" href="mailto:yaman.sivrikaya@compec.org"  target="_blank">
+                            <img src="/assets/mail.png" style="width: 44px; height: 40px;">
+                        </a>
+                        
+                            
+                    </td>
+                  </tr>
+                  <tr class="tablerow" style="    margin: 0px;
+                  border: 0px;
+                  padding: 0px;
+                  background-color: #ffffff;">
+                    <td class="tg-0lax" style="    margin: 0px;
+                    border: 0px;
+                    padding: 0px;
+                    text-align: center;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    background-color: #ffffff;">
+                        <a id="linkedinlink" href="https://www.linkedin.com/in/emir-yaman-sivrikaya/"  target="_blank">
+                            <img src="assets/linkedin.png" style="width: 44px; height: 40px;">
+                        </a>
+                    </td>
+                  </tr>
+                  <tr class="tablerow">
+                    <td class="tg-0lax" style="margin: 0px;
+                    border: 0px;
+                    padding: 0px;
+                    text-align: center;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    background-color: #ffffff;">
+                        <a href="https://www.compec.org" target="_blank">
+                            <img src="assets/compec.png" style="width: 44px;">
+                        </a>
+                    </td>
+                  </tr>
+    
+        </table>
+    </div>
+
+        
+    
+    </div>
+
+
+
+    
+    </div>
+
+
+
+
+    <script src="main.js"></script>
+</body>
+</html>

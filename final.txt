@@ -1,0 +1,98 @@
+    <div class="signature" style='    margin: auto;
+    position: relative;
+    text-align: left;
+    width: 650px;
+    height: auto;' >
+        <img class="empty" style='    margin: auto;
+    width: 100%;
+    height: auto;' src="https://i.hizliresim.com/kp7a3ce.png">
+        <a class="mailto" style='    position: absolute;
+    bottom: 145px;
+    left: 610px;
+    display: flex;
+    width: 35px;
+    height: 35px;' id='imagemaillink' href="mailto:alperen.donmez@compec.org"></a>
+        <a class="linkedin" style='    position: absolute;
+    top: 95px;
+    left: 610px;
+    display: flex;
+    width: 35px;
+    height: 35px;' id='imagelinkedin' href="https://www.linkedin.com/in/emir-yaman-sivrikaya/"></a>
+        <a class="compec" style='    position: absolute;
+    top: 130px;
+    left: 605px;
+    display: flex;
+    width: 40px;
+    height: 100px;' href="https://www.compec.org"></a>
+        <a class="phonelink" style='    position: absolute;
+    top: 15px;
+    left: 605px;
+    width: 35px;
+    height: 35px;' id="phonelink" href="https://wa.me/905326810544"></a>
+        <p class="mail" style='position: absolute;
+width: 224px;
+height: 21px;
+top: 135px;
+left: 230px;
+
+
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 21px;
+/* identical to box height */
+
+
+color: #FFFFFF;' id="imagemail">alperen.donmez@compec.org</p>
+        <p class="phone" style='    position: absolute;
+width: 224px;
+height: 21px;
+top: 110px;
+left: 225px;
+
+
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 21px;
+/* identical to box height */
+
+
+color: #FFFFFF;' id="imagephone">+90 532 681 05 44</p>
+        <p class="name" style='position: absolute;
+text-align: left;
+width: 900px;
+height: 21px;
+top: 0px;
+left: 220px;
+
+
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+font-style: bold;
+font-weight: 800;
+font-size: 32px;
+line-height: 31px;
+/* identical to box height */
+
+
+color: #FFFFFF;' id="imagename">Emir Yaman Sivrikaya</p>
+        <p class="role" style='    position: absolute;
+    text-align: left;
+    width: 900px;
+    height: 21px;
+    top: 50px;
+    left: 220px;
+    
+    
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 31px;
+    /* identical to box height */
+    
+    
+    color: #FFFFFF; ' id="imagerole">R&D Director & Board Member</p>
+    </div>
