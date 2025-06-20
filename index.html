@@ -1,139 +1,401 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compec 22-23' Signature Generator</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Compec 25-26' İmza Oluşturucu</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0; padding: 20px;
+    background: #f9fafb;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+  }
+  .container {
+    max-width: 1000px;
+    width: 100%;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgb(0 0 0 / 0.1);
+    display: flex;
+    gap: 30px;
+    padding: 30px;
+    box-sizing: border-box;
+    flex-wrap: nowrap;
+  }
+
+  form {
+    flex: 1 1 350px;
+    display: flex;
+    flex-direction: column;
+  }
+  h1 {
+    margin-bottom: 25px;
+    color: #1e3a8a;
+    font-weight: 700;
+  }
+  label {
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #334155;
+  }
+  input[type=text], input[type=email], input[type=tel] {
+    padding: 12px 14px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1.8px solid #cbd5e1;
+    margin-bottom: 20px;
+    transition: border-color 0.3s ease;
+  }
+  input[type=text]:focus, input[type=email]:focus, input[type=tel]:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 6px rgb(37 99 235 / 0.4);
+  }
+  button[type=submit] {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    padding: 14px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.25s ease;
+  }
+  button[type=submit]:hover {
+    background-color: #1e40af;
+  }
+
+  .preview-container {
+    flex: 1 1 500px;
+    background: #f1f5f9;
+    border-radius: 10px;
+    padding: 20px 25px;
+    box-sizing: border-box;
+    box-shadow: inset 0 0 8px rgb(0 0 0 / 0.07);
+    min-width: 320px;
+  }
+  h2 {
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #1e293b;
+  }
+  #signaturePreview {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 12px rgb(0 0 0 / 0.15);
+    font-size: 14px;
+  }
+
+  .save-btn {
+    margin-top: 20px;
+    background-color: #16a34a;
+    border: none;
+    color: white;
+    padding: 14px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    display: none;
+    transition: background-color 0.25s ease;
+    width: 100%;
+  }
+  .save-btn:hover {
+    background-color: #15803d;
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+      
+      padding: 20px;
+    }
+    .preview-container, form {
+      flex: 1 1 100%;
+      min-width: auto;
+    }
+    .save-btn {
+      width: 100%;
+    }
+  }
+
+  .sh-src a {
+    text-decoration: none !important;
+  }
+  .sh-src {
+    margin: 0;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    color: #000;
+  }
+  .sh-src td {
+    vertical-align: top;
+    padding: 0 8px 0 0;
+  }
+  .sh-src .separator {
+    border-right: 2px solid #336699;
+    padding-right: 15px;
+    margin-right: 15px;
+  }
+  .sh-src p {
+    margin: 1px 0;
+  }
+  .sh-src .name {
+    font-weight: 700;
+    color: #000;
+    white-space: nowrap;
+  }
+  .sh-src .title {
+    color: #888888;
+    white-space: nowrap;
+  }
+  .sh-src .company {
+    color: #888888;
+    white-space: nowrap;
+  }
+  .sh-src .contact td {
+    padding: 1px 5px 1px 0;
+    vertical-align: middle;
+  }
+  .sh-src .contact a {
+    color: #888888 !important;
+    font-size: 13px;
+    line-height: 17px;
+    white-space: nowrap;
+  }
+  .sh-src .contact a.website {
+    color: #007bff !important;
+    font-weight: 700;
+  }
+  .sh-src .footer {
+    text-align: center;
+    background-color: #336699;
+    padding: 10px;
+  }
+</style>
 </head>
 <body>
-    <div class="header-container">   
-        <h1 class="baslik"> Compec Mail Signature Generator </h1>
+
+<div class="container">
+  <form id="signatureForm" novalidate>
+    <h1>Compec Mail İmza Oluşturucu</h1>
+
+    <label for="name">İsim Soyisim</label>
+    <input type="text" id="name" name="name" placeholder="Ad Soyad" required />
+
+    <label for="title">Pozisyon</label>
+    <input type="text" id="title" name="title" placeholder="Örnek: Yönetim Kurulu Başkanı" required />
+
+    <label for="email">E-posta</label>
+    <input type="email" id="email" name="email" placeholder="ad.soyad@compec.org" required />
+
+    <label for="phone">Telefon Numarası</label>
+    <input type="tel" id="phone" name="phone" placeholder="+90 5xx xxx xx xx" required />
+
+    <label for="linkedin">LinkedIn URL</label>
+    <input type="text" id="linkedin" name="linkedin" placeholder="https://www.linkedin.com/in/adsoyad" required />
+
+    <button type="submit">İmzayı Oluştur</button>
+  </form>
+
+  <div class="preview-container">
+    <h2>İmza Önizlemesi</h2>
+    <div id="signaturePreview">
+      <p>Bilgilerinizi yukarıdaki formdan girip "İmzayı Oluştur" butonuna basınız.</p>
     </div>
-    
-    <div class="mainframe">
-    <div class="questions-holder">
+    <button class="save-btn" id="saveSignature">İmzayı Kaydet</button>
+  </div>
+</div>
 
+<script>
+  const form = document.getElementById('signatureForm');
+  const preview = document.getElementById('signaturePreview');
+  const saveBtn = document.getElementById('saveSignature');
 
-        <div class="question">
-            <p class="question1">Surname</p>
-            <p class="question1-info">Use lower case - english characters. Example: sivrikaya</p>
-            <input type="text" class="questioninput" id="q1" placeholder="sivrikaya">
-        </div>
+  const fixedCompany = 'COMPEC';
+  const fixedWebsite = 'https://www.compec.org';
 
-        <div class="question">
-            <p class="question1">Phone Number: </p>
-            <input type="text" class="questioninput" id="q2" placeholder="532 123 45 67">
-        </div>
+  function formatPhoneNumber(input) {
+    const digits = input.replace(/\D/g, '');
+    let phone = digits;
+    if (phone.startsWith('90')) phone = phone.slice(2);
+    else if (phone.startsWith('0')) phone = phone.slice(1);
+    phone = phone.slice(0, 10);
+    if (phone.length < 10) return input;
+    return `+90 ${phone[0]}${phone[1]}${phone[2]} ${phone[3]}${phone[4]}${phone[5]} ${phone[6]}${phone[7]} ${phone[8]}${phone[9]}`;
+  }
 
-        <div class="question">
-            <p class="question1">Mail Address: </p>
-            <input type="text" class="questioninput" id="q3" placeholder="example@leader.compec.org">
-        </div>
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
 
-        <div class="question">
-            <p class="question1">LinkedIn Profile Url: </p>
-            <input type="text" class="questioninput" id="q4" placeholder="https://www.linkedin.com/in/emir-yaman-sivrikaya/">
-        </div>
+    if (!form.reportValidity()) {
+    return;
+    }
 
-        
-        <div class="buttons">
-            <button onclick="submit()"  id='submitbutonu' class="submit">COMPEC ROCKS!</button>
-    
-        </div>
-    </div>
+    const name = form.name.value.trim();
+    const title = form.title.value.trim();
+    const email = form.email.value.trim();
+    const phoneInput = form.phone.value.trim();
+    const linkedinInput = form.linkedin.value.trim();
 
-    <div class="sigcontainer" style="width: 545px;
-    background-color:aqua;
-    margin:auto;
-    margin-top: 50px;">
-        <table id="sigtable" cellpadding="0" cellspacing="0">
-        
-                  <tr class="tablerow" style="    margin: 0px;
-                  border: 0px;
-                  padding: 0px;
-                  background-color: #ffffff;">
-                    <td class="tg-0pky" rowspan="4" style="    margin: 0px;
-                    border: 0px;
-                    padding: 0px;
-                    padding-left: 0px;
-                    padding-right: 0px;
-                    background-color: #ffffff;">
-                        <img id="sig-image" src="/assets/imza.png">
-                    </td>
-                    <td class="tg-0lax" style="    margin: 0px;
-                    border: 0px;
-                    padding-left: 0px;
-                    padding-right: 0px;
-                    padding: 0px;
-                    background-color: #ffffff;">
-                        <a id="phonelink" href="https://wa.me/905326810544"  target="_blank">
-                            <img src="/assets/phone.png" style="width: 44px; height: 40px;">
-                        </a>
-                            
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="tg-0lax" style="    margin: 0px;
-                    border: 0px;
-                    padding: 0px;
-                    padding-left: 0px;
-                    padding-right: 0px;
-                    background-color: #ffffff;">
-                        <a id="maillink" href="mailto:yaman.sivrikaya@compec.org"  target="_blank">
-                            <img src="/assets/mail.png" style="width: 44px; height: 40px;">
-                        </a>
-                        
-                            
-                    </td>
-                  </tr>
-                  <tr class="tablerow" style="    margin: 0px;
-                  border: 0px;
-                  padding: 0px;
-                  background-color: #ffffff;">
-                    <td class="tg-0lax" style="    margin: 0px;
-                    border: 0px;
-                    padding: 0px;
-                    text-align: center;
-                    padding-left: 0px;
-                    padding-right: 0px;
-                    background-color: #ffffff;">
-                        <a id="linkedinlink" href="https://www.linkedin.com/in/emir-yaman-sivrikaya/"  target="_blank">
-                            <img src="assets/linkedin.png" style="width: 44px; height: 40px;">
-                        </a>
-                    </td>
-                  </tr>
-                  <tr class="tablerow">
-                    <td class="tg-0lax" style="margin: 0px;
-                    border: 0px;
-                    padding: 0px;
-                    text-align: center;
-                    padding-left: 0px;
-                    padding-right: 0px;
-                    background-color: #ffffff;">
-                        <a href="https://www.compec.org" target="_blank">
-                            <img src="assets/compec.png" style="width: 44px;">
-                        </a>
-                    </td>
-                  </tr>
-    
-        </table>
-    </div>
+    const linkedinMatch = linkedinInput.match(/linkedin\.com\/in\/([^\/\?\s]+)/i);
+    const linkedinUser = linkedinMatch ? linkedinMatch[1] : linkedinInput;
 
-        
-    
-    </div>
+    const websiteDisplay = fixedWebsite.replace(/^https?:\/\/(www\.)?/, '');
 
+    const formattedPhone = formatPhoneNumber(phoneInput);
 
+    const digits = phoneInput.replace(/\D/g, '');
+    let waNumber = digits;
+    if (!digits.startsWith('90')) waNumber = '90' + digits;
 
-    
-    </div>
+    const signatureHTML = `
+<table class="sh-src" cellpadding="0" cellspacing="0" border="0">
+  <tr>
+    <td class="separator" style="padding: 10px;line-height: 1.4;">
+      <p class="name">${name}</p>
+      <p class="title">${title}</p>
+      <p class="company">${fixedCompany}</p>
+    </td>
 
+    <td style="padding: 10px;">
+      <table class="contact" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <img src="https://signaturehound.com/api/v1/png/email/default/007bff.png" width="18" height="18" alt="Email" style="display:block; border:0;">
+          </td>
+          <td>
+            <a href="mailto:${email}" target="_blank">${email}</a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <img src="https://signaturehound.com/api/v1/png/mobile/default/007bff.png" width="18" height="18" alt="Whatsapp" style="display:block; border:0;">
+          </td>
+          <td>
+            <a href="https://wa.me/${waNumber}" target="_blank">${formattedPhone}</a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <img src="https://signaturehound.com/api/v1/png/website/default/007bff.png" width="18" height="18" alt="Website" style="display:block; border:0;">
+          </td>
+          <td>
+            <a href="${fixedWebsite}" target="_blank" class="website">${websiteDisplay}</a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <img src="https://signaturehound.com/api/v1/png/linkedin/default/007bff.png" width="18" height="18" alt="LinkedIn" style="display:block; border:0;">
+          </td>
+          <td>
+            <a href="https://www.linkedin.com/in/${linkedinUser}" target="_blank" class="website">${linkedinUser}</a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="footer">
+      <img src="https://firebasestorage.googleapis.com/v0/b/compec-imza-storage.appspot.com/o/comp.png?alt=media&token=c3c5c3ed-af05-4d01-a929-ed533fca736f" height="75" alt="COMPEC Logo" style="padding: 10px;">
+    </td>
+  </tr>
+</table>`;
 
+    preview.innerHTML = signatureHTML;
+    saveBtn.style.display = 'block';
+  });
 
+  saveBtn.addEventListener('click', () => {
+    const signatureStyle = `
+<style>
+  .sh-src a {
+    text-decoration: none !important;
+  }
+  .sh-src {
+    margin: 0;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    color: #000;
+  }
+  .sh-src td {
+    vertical-align: top;
+    padding: 0 8px 0 0;
+  }
+  .sh-src .separator {
+    border-right: 2px solid #336699;
+    padding-right: 15px;
+    margin-right: 15px;
+  }
+  .sh-src p {
+    margin: 1px 0;
+  }
+  .sh-src .name {
+    font-weight: 700;
+    color: #000;
+    white-space: nowrap;
+  }
+  .sh-src .title {
+    color: #888888;
+    white-space: nowrap;
+  }
+  .sh-src .company {
+    color: #888888;
+    white-space: nowrap;
+  }
+  .sh-src .contact td {
+    padding: 1px 5px 1px 0;
+    vertical-align: middle;
+  }
+  .sh-src .contact a {
+    color: #888888 !important;
+    font-size: 13px;
+    line-height: 17px;
+    white-space: nowrap;
+  }
+  .sh-src .contact a.website {
+    color: #007bff !important;
+    font-weight: 700;
+  }
+  .sh-src .footer {
+    text-align: center;
+    background-color: #336699;
+    padding: 10px;
+  }
+</style>`;
 
-    <script src="main.js"></script>
+    const fullHTML = `
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<title>Compec İmza</title>
+${signatureStyle}
+</head>
+<body>
+${preview.innerHTML}
+</body>
+</html>
+    `;
+
+    const blob = new Blob([fullHTML], { type: 'text/html' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'compec-imza.html';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  });
+</script>
+
 </body>
 </html>
